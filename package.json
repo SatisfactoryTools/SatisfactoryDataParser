@@ -1,5 +1,5 @@
 {
-	"name": "sf-data-parser",
+	"name": "satisfactory-data-parser",
 	"version": "1.0.0",
 	"description": "Parses included Docs.json file to a documented JSON structure.",
 	"repository": "git@github.com:SatisfactoryTools/SatisfactoryDataParser.git",
