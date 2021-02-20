@@ -1,0 +1,369 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "IBuildingMetadataSchema": {
+            "properties": {
+                "beltSpeed": {
+                    "type": "number"
+                },
+                "firstPieceCostMultiplier": {
+                    "type": "number"
+                },
+                "flowLimit": {
+                    "type": "number"
+                },
+                "inventorySize": {
+                    "type": "number"
+                },
+                "lengthPerCost": {
+                    "type": "number"
+                },
+                "manufacturingSpeed": {
+                    "type": "number"
+                },
+                "maxLength": {
+                    "type": "number"
+                },
+                "maxPressure": {
+                    "type": "number"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "powerConsumptionExponent": {
+                    "type": "number"
+                },
+                "storageCapacity": {
+                    "type": "number"
+                },
+                "storageSize": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IBuildingSchema": {
+            "properties": {
+                "buildMenuPriority": {
+                    "type": "number"
+                },
+                "categories": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/IBuildingMetadataSchema"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "size": {
+                    "$ref": "#/definitions/ISizeSchema"
+                }
+            },
+            "type": "object"
+        },
+        "IColorSchema": {
+            "properties": {
+                "a": {
+                    "type": "number"
+                },
+                "b": {
+                    "type": "number"
+                },
+                "g": {
+                    "type": "number"
+                },
+                "r": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IGeneratorSchema": {
+            "properties": {
+                "className": {
+                    "type": "string"
+                },
+                "fuel": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "powerProduction": {
+                    "type": "number"
+                },
+                "powerProductionExponent": {
+                    "type": "number"
+                },
+                "waterToPowerRatio": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IItemAmountSchema": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "item": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IItemSchema": {
+            "properties": {
+                "className": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "energyValue": {
+                    "type": "number"
+                },
+                "fluidColor": {
+                    "$ref": "#/definitions/IColorSchema"
+                },
+                "liquid": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "radioactiveDecay": {
+                    "type": "number"
+                },
+                "sinkPoints": {
+                    "type": "number"
+                },
+                "stackSize": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IMinerSchema": {
+            "properties": {
+                "allowLiquids": {
+                    "type": "boolean"
+                },
+                "allowSolids": {
+                    "type": "boolean"
+                },
+                "allowedResources": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "extractCycleTime": {
+                    "type": "number"
+                },
+                "itemsPerCycle": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IRecipeSchema": {
+            "properties": {
+                "alternate": {
+                    "type": "boolean"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "forBuildGun": {
+                    "type": "boolean"
+                },
+                "inHand": {
+                    "type": "boolean"
+                },
+                "inMachine": {
+                    "type": "boolean"
+                },
+                "inWorkshop": {
+                    "type": "boolean"
+                },
+                "ingredients": {
+                    "items": {
+                        "$ref": "#/definitions/IItemAmountSchema"
+                    },
+                    "type": "array"
+                },
+                "manualTimeMultiplier": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "producedIn": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "products": {
+                    "items": {
+                        "$ref": "#/definitions/IItemAmountSchema"
+                    },
+                    "type": "array"
+                },
+                "time": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IResourceSchema": {
+            "properties": {
+                "item": {
+                    "type": "string"
+                },
+                "pingColor": {
+                    "$ref": "#/definitions/IColorSchema"
+                },
+                "speed": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ISchematicSchema": {
+            "properties": {
+                "alternate": {
+                    "type": "boolean"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "cost": {
+                    "items": {
+                        "$ref": "#/definitions/IItemAmountSchema"
+                    },
+                    "type": "array"
+                },
+                "mam": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "requiredSchematics": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "tier": {
+                    "type": "number"
+                },
+                "time": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "unlock": {
+                    "$ref": "#/definitions/ISchematicUnlockSchema"
+                }
+            },
+            "type": "object"
+        },
+        "ISchematicUnlockSchema": {
+            "properties": {
+                "inventorySlots": {
+                    "type": "number"
+                },
+                "recipes": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "scannerResources": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ISizeSchema": {
+            "properties": {
+                "height": {
+                    "type": "number"
+                },
+                "length": {
+                    "type": "number"
+                },
+                "width": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "properties": {
+        "buildings": {
+            "additionalProperties": {
+                "$ref": "#/definitions/IBuildingSchema"
+            },
+            "type": "object"
+        },
+        "generators": {
+            "additionalProperties": {
+                "$ref": "#/definitions/IGeneratorSchema"
+            },
+            "type": "object"
+        },
+        "items": {
+            "additionalProperties": {
+                "$ref": "#/definitions/IItemSchema"
+            },
+            "type": "object"
+        },
+        "miners": {
+            "additionalProperties": {
+                "$ref": "#/definitions/IMinerSchema"
+            },
+            "type": "object"
+        },
+        "recipes": {
+            "additionalProperties": {
+                "$ref": "#/definitions/IRecipeSchema"
+            },
+            "type": "object"
+        },
+        "resources": {
+            "additionalProperties": {
+                "$ref": "#/definitions/IResourceSchema"
+            },
+            "type": "object"
+        },
+        "schematics": {
+            "additionalProperties": {
+                "$ref": "#/definitions/ISchematicSchema"
+            },
+            "type": "object"
+        }
+    },
+    "type": "object"
+}
+

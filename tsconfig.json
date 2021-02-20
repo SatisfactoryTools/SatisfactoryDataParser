@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"sourceMap": false,
+		"moduleResolution": "node",
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"lib": [
+			"esnext",
+		],
+		"target": "es5",
+		"paths": {
+			"@src/*": ["./src/*"],
+		}
+	}
+}
