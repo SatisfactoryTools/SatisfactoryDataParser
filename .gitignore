@@ -1,5 +1,6 @@
+# IDE stuff
 .idea
 
+# project stuff
 node_modules
-yarn.lock
 data
